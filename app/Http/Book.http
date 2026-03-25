@@ -1,0 +1,25 @@
+### Obtener lista de libros
+GET http://localhost:8080/api/books
+Accept: application/json
+
+### Obtener por id
+GET http://localhost:8080/api/books/1?include=author
+Accept: application/json
+
+
+### Crear libro
+POST http://localhost:8080/api/books
+Content-Type: application/x-www-form-urlencoded
+
+title=Clean%20Code&author=Robert%20C.%20Martin&year=2008&author_id=1
+
+### Actualizar libro
+PUT http://localhost:8080/api/books/1
+Content-Type: application/x-www-form-urlencoded
+
+title=Clean%20Code&author=Robert%20C.%20Martin&year=2010&author_id=1
+
+
+### Eliminar libro
+DELETE http://localhost:8080/api/books/1
+Accept: application/json

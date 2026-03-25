@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Transformers;
+
+use CodeIgniter\API\BaseTransformer;
+
+class BookTransformer extends BaseTransformer
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param mixed $resource
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(mixed $resource): array
+    {
+        return [
+            'id' => $resource['id'],
+            'title' => $resource['title'],
+            'year' => $resource['year'],
+        ];
+    }
+
+    public function includeAuthor(): ?array
+    {
+        $book = $this->resource;
+
+        if (empty($book['author_id']) || empty($book['author_name'])) {
+            return null;
+        }
+
+        return [
+            'id' => $book['author_id'],
+            'name' => $book['author_name'],
+        ];
+    }
+}
