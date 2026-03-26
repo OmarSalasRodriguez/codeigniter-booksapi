@@ -262,6 +262,9 @@
   .max-w-2xl {
     max-width: var(--container-2xl);
   }
+  .cursor-pointer {
+    cursor: pointer;
+  }
   .flex-col {
     flex-direction: column;
   }

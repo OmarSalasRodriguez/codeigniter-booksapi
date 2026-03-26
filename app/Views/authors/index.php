@@ -33,9 +33,13 @@
                     <a class="bg-blue-300 text-white p-2 px-4 rounded" href="<?= site_url('/authors/' . $author['id'] . '/edit') ?>">
                         Edit
                     </a>
-                    <a class="bg-red-300 text-white p-2 px-4 rounded"  href="<?= site_url('/authors/' . $author['id'] . '/delete') ?>">
-                        Delete
-                    </a>
+                    <form action="<?= site_url('/authors/' . $author['id']) ?>" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <?= csrf_field() ?>
+                        <button type="submit" class="bg-red-300 text-white p-2 px-4 rounded cursor-pointer" onclick="return confirm('Delete this author?')">
+                            Delete
+                        </button>
+                    </form>
                 </div>
 
             </li>
