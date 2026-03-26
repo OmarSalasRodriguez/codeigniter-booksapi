@@ -8,6 +8,18 @@
     <div class="bg-neutral-200 rounded p-4 mb-4">
         <h2 class="text-xl font-bold mb-2"><?= esc($author['name']) ?></h2>
         <p class="text-gray-600">ID: <?= esc($author['id']) ?></p>
+        
+        <div class="flex gap-2 mt-4">
+            <a class="bg-blue-300 text-white p-2 px-4 rounded" href="<?= site_url('/authors/edit/' . $author['id']) ?>">
+                Edit
+            </a>
+            <form action="<?= site_url('/authors/delete/' . $author['id']) ?>" method="POST">
+                <?= csrf_field() ?>
+                <button type="submit" class="bg-red-300 text-white p-2 px-4 rounded cursor-pointer" onclick="return confirm('Delete this author?')">
+                    Delete
+                </button>
+            </form>
+        </div>
     </div>
 
     <h3 class="text-lg font-bold mb-2">Books by this author:</h3>

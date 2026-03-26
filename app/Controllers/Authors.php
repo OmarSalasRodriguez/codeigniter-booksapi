@@ -20,7 +20,7 @@ class Authors extends BaseController
     {
         $data['authors'] = $this->model->orderBy('id', 'desc')->findAll();
 
-        return view('authors/index', $data);
+        return view('authors/list', $data);
     }
 
     public function show($id): string
@@ -36,12 +36,12 @@ class Authors extends BaseController
         $data['author'] = $author;
         $data['books'] = $bookModel->where('author_id', $id)->findAll();
 
-        return view('authors/show', $data);
+        return view('authors/authors-show', $data);
     }
 
     public function new(): string
     {
-        return view('authors/create');
+        return view('authors/authors-create');
     }
 
     public function create(): ResponseInterface
@@ -68,7 +68,7 @@ class Authors extends BaseController
             throw new PageNotFoundException("Author not found");
         }
 
-        return view('authors/edit', ['id' => $id, 'author' => $author]);
+        return view('authors/authors-edit', ['id' => $id, 'author' => $author]);
     }
 
     public function update($id): ResponseInterface
